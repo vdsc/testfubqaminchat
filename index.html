@@ -6,65 +6,50 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 40px;
       text-align: center;
+      margin-top: 100px;
     }
-
-    .chat-button {
-      display: inline-block;
-      padding: 12px 20px;
-      background-color: #0070d2;
-      color: white;
-      text-decoration: none;
-      border: none;
-      border-radius: 5px;
+    #liveagent_button_online_5736g0000005h5j,
+    #liveagent_button_offline_5736g0000005h5j {
+      display: none;
+      padding: 12px 24px;
       font-size: 16px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
     }
-
-    .offline-message {
-      color: red;
-      font-weight: bold;
+    #liveagent_button_online_5736g0000005h5j {
+      background-color: #0070d2;
+      color: white;
+    }
+    #liveagent_button_offline_5736g0000005h5j {
+      background-color: #ccc;
+      color: #333;
     }
   </style>
 </head>
 <body>
 
-  <h1>Live Chat Support</h1>
+  <h1>Need Help? Chat with Us!</h1>
 
   <!-- Online Chat Button -->
-  <button id="liveagent_button_online_5736g0000005h5j" class="chat-button" style="display:none;" onclick="liveagent.startChat('5736g0000005h5j')">
-    💬 Chat with an Agent Now
+  <button id="liveagent_button_online_5736g0000005h5j" onclick="liveagent.startChat('5736g0000005h5j')">
+    Chat with an Agent
   </button>
 
-  <!-- Offline Message -->
-  <div id="liveagent_button_offline_5736g0000005h5j" class="offline-message" style="display:none;">
-    🚫 Live chat is currently unavailable. Please try again later.
-  </div>
+  <!-- Offline Button -->
+  <button id="liveagent_button_offline_5736g0000005h5j" disabled>
+    Chat Unavailable
+  </button>
 
   <!-- Live Agent Deployment Script -->
-  <script type='text/javascript' src='https://c.la1-c1-ia4.salesforceliveagent.com/content/g/js/61.0/deployment.js'></script>
-
-  <!-- Live Agent Init Script -->
+  <script type="text/javascript" src="https://c.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/content/g/js/64.0/deployment.js"></script>
   <script type="text/javascript">
-    if (!window._laq) { window._laq = []; }
+    liveagent.init('https://d.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/chat', '5726g0000005fSP', '00DWH0000028Bra');
 
-    window._laq.push(function() {
-      liveagent.showWhenOnline(
-        '5736g0000005h5j',
-        document.getElementById('liveagent_button_online_5736g0000005h5j')
-      );
-      liveagent.showWhenOffline(
-        '5736g0000005h5j',
-        document.getElementById('liveagent_button_offline_5736g0000005h5j')
-      );
-    });
-
-    liveagent.init(
-      'https://d.la1-c1-ia4.salesforceliveagent.com/chat',
-      '5726g0000005h5j',
-      '00D6g0000004cwO'
-    );
+    // Show/hide buttons based on agent availability
+    liveagent.showWhenOnline('5736g0000005h5j', document.getElementById('liveagent_button_online_5736g0000005h5j'));
+    liveagent.showWhenOffline('5736g0000005h5j', document.getElementById('liveagent_button_offline_5736g0000005h5j'));
   </script>
 
 </body>
