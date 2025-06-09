@@ -9,16 +9,19 @@
       margin: 40px;
       text-align: center;
     }
+
     .chat-button {
       display: inline-block;
       padding: 12px 20px;
       background-color: #0070d2;
       color: white;
       text-decoration: none;
+      border: none;
       border-radius: 5px;
       font-size: 16px;
-      margin: 10px 0;
+      cursor: pointer;
     }
+
     .offline-message {
       color: red;
       font-weight: bold;
@@ -29,24 +32,23 @@
 
   <h1>Live Chat Support</h1>
 
-  <!-- Live Agent Online Button -->
-  <a id="liveagent_button_online_5736g0000005h5j" href="javascript://Chat" style="display: none;" class="chat-button" onclick="liveagent.startChat('5736g0000005h5j')">
+  <!-- Online Chat Button -->
+  <button id="liveagent_button_online_5736g0000005h5j" class="chat-button" style="display:none;" onclick="liveagent.startChat('5736g0000005h5j')">
     💬 Chat with an Agent Now
-  </a>
+  </button>
 
-  <!-- Live Agent Offline Div -->
-  <div id="liveagent_button_offline_5736g0000005h5j" style="display: none;" class="offline-message">
+  <!-- Offline Message -->
+  <div id="liveagent_button_offline_5736g0000005h5j" class="offline-message" style="display:none;">
     🚫 Live chat is currently unavailable. Please try again later.
   </div>
 
   <!-- Live Agent Deployment Script -->
   <script type='text/javascript' src='https://c.la1-c1-ia4.salesforceliveagent.com/content/g/js/61.0/deployment.js'></script>
 
-  <!-- Live Agent Config -->
+  <!-- Live Agent Init Script -->
   <script type="text/javascript">
-    if (!window._laq) {
-      window._laq = [];
-    }
+    if (!window._laq) { window._laq = []; }
+
     window._laq.push(function() {
       liveagent.showWhenOnline(
         '5736g0000005h5j',
