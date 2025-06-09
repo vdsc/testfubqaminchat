@@ -1,47 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Live Agent Chat</title>
+  <meta charset="UTF-8" />
+  <title>Live Agent Chat fubqamin</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      padding-top: 100px;
+      margin: 40px;
     }
-    #chatButton {
-      padding: 14px 28px;
-      font-size: 18px;
+    .chat-button {
+      padding: 12px 20px;
       background-color: #0070d2;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
+      display: none;
+    }
+    .offline-message {
+      color: red;
+      font-weight: bold;
+      display: none;
     }
   </style>
-
-  <!-- Salesforce Live Agent deployment.js -->
-  <script src="https://c.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/content/g/js/64.0/deployment.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    // Initialize Live Agent
-    window.onload = function () {
-      liveagent.init('https://d.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/chat', '5726g0000005fSP', '00DWH0000028Bra');
-
-      // Optional: check agent availability before enabling chat
-      liveagent.addButtonEventHandler('5736g0000005h5j', function (e) {
-        if (e == liveagent.BUTTON_EVENT.BUTTON_AVAILABLE) {
-          document.getElementById('chatButton').disabled = false;
-        } else {
-          document.getElementById('chatButton').disabled = true;
-          document.getElementById('chatButton').innerText = 'Chat Unavailable';
-        }
-      });
-    };
-  </script>
 </head>
 <body>
 
-  <button id="chatButton" onclick="liveagent.startChat('5736g0000005h5j')">Chat with Us</button>
+  <h1>Live Chat Support</h1>
+
+  <!-- Online Chat Button -->
+  <button id="startChatBtn" class="chat-button">
+    💬 Chat with an Agent Now
+  </button>
+
+  <!-- Offline Message -->
+  <div id="offlineMsg" class="offline-message">
+    🚫 Live chat is currently unavailable. Please try again later.
+  </div>
+
+  <!-- Live Agent Deployment Script -->
+  <script type="text/javascript" src="https://c.la1-c1-ia4.salesforceliveagent.com/content/g/js/61.0/deployment.js"></script>
+
+  <!-- Live Agent Config -->
+  <script>
+    if (!window._laq) {
+      window._laq = [];
+    }
+
+    // Wait until Live Agent is ready
+    _laq.push(function() {
+      const chatBtn = document.getElementById('startChatBtn');
+      const offlineMsg = document.getElementById('offlineMsg');
+
+      // Show/hide based on online/offline status
+      liveagent.showWhenOnline('5736g0000005h5j', chatBtn);
+      liveagent.showWhenOffline('5736g0000005h5j', offlineMsg);
+
+      // Start chat on button click
+      chatBtn.addEventListener('click', function () {
+        liveagent.startChat('5736g0000005h5j');
+      });
+    });
+
+    // Initialize Live Agent
+    liveagent.init(
+      'https://d.la1-c1-ia4.salesforceliveagent.com/chat',
+      '5726g0000005h5j', // Deployment ID
+      '00D6g0000004cwO'  // Org ID
+    );
+  </script>
 
 </body>
 </html>
