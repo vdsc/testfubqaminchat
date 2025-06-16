@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Live Agent Chat fubqamin</title>
+  <title>Live Agent Chat</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -31,22 +31,22 @@
 </head>
 <body>
 
-  <h1>Live Chat Support fubqamin</h1>
+  <h1>Live Chat Support</h1>
 
   <!-- Online Chat Button -->
   <a
-    id="liveagent_button_online_5736g0000005h5j"
+    id="liveagent_button_online_5736g0000006xyz"
     href="javascript://Chat"
     class="chat-link"
     style="display: none;"
-    onclick="liveagent.startChat('5736g0000005h5j')"
+    onclick="liveagent.startChat('5736g0000006xyz')"
   >
     Chat with an Agent Now
   </a>
 
   <!-- Offline Message -->
   <div
-    id="liveagent_button_offline_5736g0000005h5j"
+    id="liveagent_button_offline_5736g0000006xyz"
     class="offline-message"
     style="display: none;"
   >
@@ -64,32 +64,32 @@
   </button>
 
   <!-- Live Agent Deployment Script -->
-  <script type="text/javascript" src="https://c.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/content/g/js/64.0/deployment.js"></script>
+  <script type="text/javascript" src="https://c.la13-core1.sfdc-8tgtt5.salesforceliveagent.com/content/g/js/64.0/deployment.js"></script>
 
   <!-- Live Agent Init and Button Logic -->
   <script type="text/javascript">
-    // Initialize the liveagent button show/hide logic
+    // Register button display logic
     if (!window._laq) { window._laq = []; }
 
     window._laq.push(function () {
       liveagent.showWhenOnline(
-        '5736g0000005h5j',
-        document.getElementById('liveagent_button_online_5736g0000005h5j')
+        '5736g0000006xyz',
+        document.getElementById('liveagent_button_online_5736g0000006xyz')
       );
       liveagent.showWhenOffline(
-        '5736g0000005h5j',
-        document.getElementById('liveagent_button_offline_5736g0000005h5j')
+        '5736g0000006xyz',
+        document.getElementById('liveagent_button_offline_5736g0000006xyz')
       );
     });
 
-    // Initialize Live Agent with deployment info
+    // Init Live Agent with updated deployment info
     liveagent.init(
-      'https://d.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/chat',
-      '5726g0000005fSP', // Deployment ID
-      '00DWH0000028Bra'  // Org ID
+      'https://d.la13-core1.sfdc-8tgtt5.salesforceliveagent.com/chat',
+      '5726g0000005fSP', // New Deployment ID
+      '00D6g000003tgem'  // New Org ID
     );
 
-    // Show/Hide End Chat button based on chat status
+    // Show/Hide End Chat button on status
     function showEndChatButton() {
       document.getElementById('endChatButton').style.display = 'inline-block';
     }
