@@ -9,7 +9,7 @@
       text-align: center;
       margin: 40px;
     }
-    a.chat-link, button.chat-link {
+    .chat-link {
       padding: 12px 20px;
       background-color: #0070d2;
       color: white;
@@ -19,9 +19,6 @@
       font-size: 16px;
       display: inline-block;
       cursor: pointer;
-    }
-    button.chat-link.end {
-      background-color: #d9534f;
     }
     .offline-message {
       color: red;
@@ -34,72 +31,47 @@
   <h1>Live Chat Support</h1>
 
   <!-- Online Chat Button -->
-  <a
-    id="liveagent_button_online_5736g0000006xyz"
-    href="javascript://Chat"
-    class="chat-link"
-    style="display: none;"
-    onclick="liveagent.startChat('5736g0000006xyz')"
+  <a 
+    id="liveagent_button_online_5736g0000005h5j" 
+    href="javascript://Chat" 
+    class="chat-link" 
+    style="display: none;" 
+    onclick="liveagent.startChat('5736g0000005h5j')"
   >
     Chat with an Agent Now
   </a>
 
   <!-- Offline Message -->
-  <div
-    id="liveagent_button_offline_5736g0000006xyz"
-    class="offline-message"
+  <div 
+    id="liveagent_button_offline_5736g0000005h5j" 
+    class="offline-message" 
     style="display: none;"
   >
     Live chat is currently unavailable. Please try again later.
   </div>
 
-  <!-- End Chat Button -->
-  <button
-    id="endChatButton"
-    class="chat-link end"
-    style="display: none;"
-    onclick="liveagent.endChat(); hideEndChatButton();"
-  >
-    End Chat
-  </button>
-
-  <!-- Live Agent Deployment Script -->
+  <!-- Salesforce Live Agent Scripts -->
   <script type="text/javascript" src="https://c.la13-core1.sfdc-8tgtt5.salesforceliveagent.com/content/g/js/64.0/deployment.js"></script>
-
-  <!-- Live Agent Init and Button Logic -->
   <script type="text/javascript">
-    // Register button display logic
-    if (!window._laq) { window._laq = []; }
-
-    window._laq.push(function () {
-      liveagent.showWhenOnline(
-        '5736g0000006xyz',
-        document.getElementById('liveagent_button_online_5736g0000006xyz')
-      );
-      liveagent.showWhenOffline(
-        '5736g0000006xyz',
-        document.getElementById('liveagent_button_offline_5736g0000006xyz')
-      );
-    });
-
-    // Init Live Agent with updated deployment info
+    // Initialize Live Agent with your org's info
     liveagent.init(
       'https://d.la13-core1.sfdc-8tgtt5.salesforceliveagent.com/chat',
-      '5726g0000005fSP', // New Deployment ID
-      '00D6g000003tgem'  // New Org ID
+      '5726g0000005fSP', // Deployment ID
+      '00D6g000003tgem'  // Org ID
     );
 
-    // Show/Hide End Chat button on status
-    function showEndChatButton() {
-      document.getElementById('endChatButton').style.display = 'inline-block';
-    }
-
-    function hideEndChatButton() {
-      document.getElementById('endChatButton').style.display = 'none';
-    }
-
-    liveagent.addEventHandler(liveagent.ChatEvent.CHAT_STARTED, showEndChatButton);
-    liveagent.addEventHandler(liveagent.ChatEvent.CHAT_ENDED, hideEndChatButton);
+    // Set up button behavior
+    if (!window._laq) { window._laq = []; }
+    window._laq.push(function () {
+      liveagent.showWhenOnline(
+        '5736g0000005h5j',
+        document.getElementById('liveagent_button_online_5736g0000005h5j')
+      );
+      liveagent.showWhenOffline(
+        '5736g0000005h5j',
+        document.getElementById('liveagent_button_offline_5736g0000005h5j')
+      );
+    });
   </script>
 
 </body>
