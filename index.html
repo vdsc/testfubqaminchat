@@ -3,75 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <title>Live Agent Chat</title>
-  <style>
+
+  <style type="text/css">
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       margin: 40px;
     }
-    .chat-link {
-      padding: 12px 20px;
-      background-color: #0070d2;
-      color: white;
-      text-decoration: none;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      display: inline-block;
-      cursor: pointer;
+
+    .embeddedServiceHelpButton .helpButton .uiButton {
+      background-color: #005290;
+      font-family: "Arial", sans-serif;
     }
-    .offline-message {
-      color: red;
-      font-weight: bold;
+
+    .embeddedServiceHelpButton .helpButton .uiButton:focus {
+      outline: 1px solid #005290;
     }
   </style>
 </head>
+
 <body>
 
   <h1>Live Chat Support</h1>
+  <p>Click the chat button below to connect with a customer care agent.</p>
 
-  <!-- Online Chat Button -->
-  <a 
-    id="liveagent_button_online_5736g0000005h5j" 
-    href="javascript://Chat" 
-    class="chat-link" 
-    style="display: none;" 
-    onclick="liveagent.startChat('5736g0000005h5j')"
-  >
-    Chat with an Agent Now
-  </a>
+  <!-- Embedded Service Script -->
+  <script
+    type="text/javascript"
+    src="https://service.force.com/embeddedservice/5.0/esw.min.js">
+  </script>
 
-  <!-- Offline Message -->
-  <div 
-    id="liveagent_button_offline_5736g0000005h5j" 
-    class="offline-message" 
-    style="display: none;"
-  >
-    Live chat is currently unavailable. Please try again later.
-  </div>
-
-  <!-- Salesforce Live Agent Scripts -->
-  <script type="text/javascript" src="https://c.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/content/g/js/64.0/deployment.js"></script>
   <script type="text/javascript">
-    // Initialize Live Agent with your org's info
-    liveagent.init(
-      'https://d.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/chat',
-      '5726g0000005fSP', // Deployment ID
-      '00DWI000003gd4r'  // Org ID
-    );
+    var initESW = function (gslbBaseURL) {
 
-    // Set up button behavior
-    if (!window._laq) { window._laq = []; }
-    window._laq.push(function () {
-      liveagent.showWhenOnline(
-        '5736g0000005h5j',
-        document.getElementById('liveagent_button_online_5736g0000005h5j')
+      embedded_svc.settings.displayHelpButton = true;
+      embedded_svc.settings.language = "en-US";
+
+      embedded_svc.settings.enabledFeatures = ["LiveAgent"];
+      embedded_svc.settings.entryFeature = "LiveAgent";
+
+      embedded_svc.init(
+        "https://firstunitedbank--uat.sandbox.my.salesforce.com",
+        "https://firstunitedbank--uat.sandbox.my.salesforce-sites.com/liveAgentSetupFlow",
+        gslbBaseURL,
+        "00DWB000005pBlx", // Org ID
+        "Customer_Care_Chat_Users",
+        {
+          baseLiveAgentContentURL:
+            "https://c.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/content",
+          deploymentId: "5726g0000005fSP",
+          buttonId: "5736g0000005h5j",
+          baseLiveAgentURL:
+            "https://d.la12s-core1.sfdc-8tgtt5.salesforceliveagent.com/chat",
+          eswLiveAgentDevName: "Customer_Care_Chat_Users",
+          isOfflineSupportEnabled: true
+        }
       );
-      liveagent.showWhenOffline(
-        '5736g0000005h5j',
-        document.getElementById('liveagent_button_offline_5736g0000005h5j')
+    };
+
+    if (!window.embedded_svc) {
+      var s = document.createElement("script");
+      s.setAttribute(
+        "src",
+        "https://firstunitedbank--uat.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js"
       );
-    });
+      s.onload = function () {
+        initESW(null);
+      };
+      document.body.appendChild(s);
+    } else {
+      initESW("https://service.force.com");
+    }
   </script>
 
 </body>
